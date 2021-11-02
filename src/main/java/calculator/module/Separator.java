@@ -1,6 +1,7 @@
 package calculator.module;
 
 import calculator.domain.Numbers;
+import calculator.utils.StringUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,13 +16,13 @@ public class Separator {
     private String delimiter;
     private String separated;
 
-    private Separator(String delimiter, String separated){
+    private Separator(String delimiter, String separated) {
         this.delimiter = delimiter;
         this.separated = separated;
     }
 
     public static Separator separate(String input) {
-        if(input == null || input.trim().isEmpty()){
+        if (StringUtils.isEmpty(input)) {
             input = "0";
         }
 
@@ -30,15 +31,15 @@ public class Separator {
         String delimiter = DEFAULT_REGEX;
         String separated = input;
 
-        if(m.find()){
-            delimiter = "\\"+m.group(1);
+        if (m.find()) {
+            delimiter = "\\" + m.group(1);
             separated = m.group(2);
         }
 
         return new Separator(delimiter, separated);
     }
 
-    public Numbers splitSeparated(){
+    public Numbers splitSeparated() {
         List<String> stringList = Arrays.asList(separated.split(delimiter));
         return new Numbers(stringList);
     }

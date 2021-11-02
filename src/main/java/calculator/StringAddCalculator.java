@@ -5,9 +5,10 @@ import calculator.module.Separator;
 
 public class StringAddCalculator {
 
-    private StringAddCalculator() {}
+    private StringAddCalculator() {
+    }
 
-    public static int splitAndSum(String input){
+    public static int splitAndSum(String input) {
         return Separator.separate(input)
                 .splitSeparated()
                 .getNumberList()
