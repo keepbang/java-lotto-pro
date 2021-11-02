@@ -10,6 +10,8 @@ import java.util.regex.Pattern;
 public class Separator {
     private static final String CUSTOM_REGEX = "//(.)\n(.*)";
     private static final String DEFAULT_REGEX = ",|:";
+    private static final Pattern PATTERN_COMPILE = Pattern.compile(CUSTOM_REGEX);
+
     private String delimiter;
     private String separated;
 
@@ -23,7 +25,7 @@ public class Separator {
             input = "0";
         }
 
-        Matcher m = Pattern.compile(CUSTOM_REGEX).matcher(input);
+        Matcher m = PATTERN_COMPILE.matcher(input);
 
         String delimiter = DEFAULT_REGEX;
         String separated = input;
